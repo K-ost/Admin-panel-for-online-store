@@ -14,6 +14,7 @@ import AddGood from './pages/AddGood'
 import EditGood from './pages/EditGood'
 import EditCat from './pages/EditCat'
 import Notice from './components/Notice'
+import EditComment from './pages/EditComment'
 
 const Dashboard: React.FC = () => {
   const login = useSelector((state: RootState) => state.app.login)
@@ -46,6 +47,7 @@ const Dashboard: React.FC = () => {
             <Route path="product-edit/:id" element={<EditGood />} />
             <Route path="orders" element={<Orders />} />
             <Route path="comments" element={<Comments />} />
+            <Route path="comment-edit/:id" element={<EditComment />} />
           </Routes>
         </div>
         <div className="app-footer">
