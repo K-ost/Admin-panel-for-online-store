@@ -11,6 +11,10 @@ body {
 
 .form-field {
   margin: 0 0 20px;
+  &-text {
+    font-size: 14px;
+    margin-top: 6px;
+  }
 }
 .form-label {
   font-weight: 700;
@@ -35,6 +39,21 @@ textarea.form-control {
 }
 
 
+/* login */
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .module {
+    width: 100%;
+    max-width: 360px;
+    h4 {margin: 0 0 20px;}
+  }
+}
+
+
+/* App */
 .app {
   display: flex;
   height: 100vh;

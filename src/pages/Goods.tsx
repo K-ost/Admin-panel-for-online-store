@@ -18,9 +18,11 @@ const Goods: React.FC = () => {
   const [perpage, setPerpage] = useState<number>(7)
   const [searchState, setSearchState] = useState<string>('')
 
+
   useEffect(() => {
     fetch(`${server}/categories`).then(response => response.json()).then(data => setCats(data))
   }, [dispatch])
+
 
   useEffect(() => {
     fetch(`${server}/goods?_start=0&_end=${perpage}${sort}${searchState}`)
@@ -34,6 +36,7 @@ const Goods: React.FC = () => {
       })
   }, [refetch, dispatch, perpage, sort, searchState])
 
+
   // sortCategory
   const sortCategory = (val: string) => {
     const cat = cats.find(el => el.title === val)
@@ -44,6 +47,7 @@ const Goods: React.FC = () => {
       setSort('')
     }
   }
+
 
   // loadMoreGoods
   const loadMoreGoods = () => {
@@ -57,6 +61,7 @@ const Goods: React.FC = () => {
     setSearchState(`&q=${text}`)
   }, 1000)
 
+  
   // Search
   const searchProduct = (e: any) => {
     let { value } = e.target
@@ -75,7 +80,7 @@ const Goods: React.FC = () => {
       <div className="form-field">
         <div className="input-group">
           <span className="input-group-text">Category</span>
-          <select className="form-select" onChange={e => sortCategory(e.target.value)}>
+          <select className="form-select" onChange={e => sortCategory(e.target.value)} data-testid="sortby">
             <option>All</option>
             {cats.map(el => <option key={el.id}>{el.title}</option>)}
           </select>
@@ -111,7 +116,7 @@ const Goods: React.FC = () => {
       })}
 
       {goods.length < totalCount && <div className="text-center mt-4">
-        <button className="btn btn-outline-primary" onClick={loadMoreGoods}>
+        <button className="btn btn-outline-primary" onClick={loadMoreGoods} data-testid="loadmore">
           {refetch && <span className="spinner-border spinner-border-sm me-2"></span>}
           Load more
         </button>
