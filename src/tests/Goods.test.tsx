@@ -39,5 +39,16 @@ describe('Products page test', () => {
     })
   })
 
+  it('Sort by category', async () => {
+    render(wrapper)
+    expect(await screen.findAllByText("Info")).toBeTruthy()
+    const select = await screen.findByTestId("sortby")
+    fireEvent.change(select, { target: { value: 'Apple' } })
+    await waitFor(() => {
+      const cats = screen.getAllByTestId(/cat-/i)
+      cats.map(el => expect(el).toHaveTextContent(/Apple/i))
+    })
+  })
+
 
 })

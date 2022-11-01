@@ -36,7 +36,7 @@ const ItemBox: React.FC<IntItemBox> = ({ cat, children, id, index, link, title, 
   return (
     <div className="itembox">
       <div className="itembox-head">
-        <div className="itembox-title">{index}. {title} {cat && <small>- ({cat})</small>}</div>
+        <div className="itembox-title">{index}. {title} {cat && <small data-testid={`cat-${id}`}>- ({cat})</small>}</div>
         <button className="btn btn-sm btn-info" onClick={() => setHidden(!hidden)}>Info</button>
         <Link to={link} className="btn btn-sm btn-warning">Edit</Link>
         <button className="btn btn-sm btn-danger" onClick={() => setModal(true)}>Delete</button>
