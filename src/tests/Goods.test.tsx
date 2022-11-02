@@ -50,5 +50,13 @@ describe('Products page test', () => {
     })
   })
 
+  it('Search debounce function', async () => {
+    render(wrapper)
+    fireEvent.change(screen.getByTestId("search"), { target: { value: "ap" } })
+    await waitFor(() => {
+      expect(screen.getByText("http://localhost:5000/goods?_start=0&_end=7&q=ap")).toBeInTheDocument()
+    })
+  })
+
 
 })

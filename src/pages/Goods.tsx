@@ -59,7 +59,7 @@ const Goods: React.FC = () => {
   // Search debounceValue
   const debounceValue = debounce((text: string) => {
     setSearchState(`&q=${text}`)
-  }, 1000)
+  }, 700)
 
   
   // Search
@@ -90,7 +90,7 @@ const Goods: React.FC = () => {
       <div className="form-field">
         <div className="input-group">
           <span className="input-group-text">Search</span>
-          <input type="text" className="form-control" placeholder="Search product..." onChange={searchProduct} />
+          <input type="text" className="form-control" placeholder="Search product..." onChange={searchProduct} data-testid="search" />
         </div>
       </div>
 
