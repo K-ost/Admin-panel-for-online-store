@@ -49,14 +49,19 @@ describe('Products page test', () => {
       cats.map(el => expect(el).toHaveTextContent(/Apple/i))
     })
   })
-
-  it('Search debounce function', async () => {
+  
+  it('Search', async () => {
     render(wrapper)
-    fireEvent.change(screen.getByTestId("search"), { target: { value: "ap" } })
+    fireEvent.change(screen.getByTestId("search"), { target: { value: "app" } })
+    // Waiting for debounce
     await waitFor(() => {
-      expect(screen.getByText("http://localhost:5000/goods?_start=0&_end=7&q=ap")).toBeInTheDocument()
+      expect(screen.getByText("http://localhost:5000/goods?_start=0&_end=7&q=app")).toBeInTheDocument()
+    })
+    // Waiting for find
+    await waitFor(() => {
+      const cats = screen.getAllByTestId(/cat-/i)
+      cats.map(el => expect(el).toHaveTextContent(/Apple/i))
     })
   })
-
 
 })
