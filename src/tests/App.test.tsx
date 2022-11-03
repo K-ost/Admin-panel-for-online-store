@@ -16,5 +16,10 @@ describe('App test', () => {
     expect(welcome).toBeInTheDocument()
   })
 
+  it('Log out', () => {
+    render(wrapper)
+    fireEvent.click(screen.getByText("Logout"))
+    expect(screen.getByText("Authorization")).toBeInTheDocument()
+  })
 
 })
