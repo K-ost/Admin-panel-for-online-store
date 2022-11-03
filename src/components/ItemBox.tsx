@@ -48,7 +48,7 @@ const ItemBox: React.FC<IntItemBox> = ({ cat, children, id, index, link, title, 
         </div>
       </div>
 
-      <ModalPopup title={`You're going to remove the "${title}"`} show={modal} hide={() => setModal(false)}>
+      <ModalPopup title={`You're removing the "${title}"`} show={modal} hide={() => setModal(false)}>
         <p>Are you sure?</p>
         <div className="d-flex justify-content-between">
           <button className="btn btn-outline-secondary" onClick={() => setModal(false)}>Cancel</button>
